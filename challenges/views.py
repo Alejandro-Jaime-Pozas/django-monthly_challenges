@@ -11,6 +11,10 @@ from django.http import HttpResponse, HttpResponseNotFound
 #     return HttpResponse("Wash the dishes in feb")
 
 
+def monthly_challenge_by_number(request, month):
+    return HttpResponse(month)
+
+
 def monthly_challenge(request, month): # second parameter should be identical to urls path string bw <> brackets
     challenge_text = None 
     if month == "january":
