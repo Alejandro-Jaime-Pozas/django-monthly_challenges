@@ -29,8 +29,9 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
+# ADD APPS HERE SO DJANGO RECOGNIZES
 INSTALLED_APPS = [
+    'challenges', # MANUALLY ADDED THIS TO REFER TO CHALLENGES APP
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
