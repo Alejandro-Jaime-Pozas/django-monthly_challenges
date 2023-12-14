@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ month_name|title }} Challenge</title>
-</head>
-<body>
-    <h1>{{ month_name|title }} Challenge</h1>
-    <!-- use curly brackets to write django language DTL -->
-    {% if text %}
-    <h2>{{ text }}</h2>
-    {% else %}
-    <p>There is no challenge for this month yet!<p>
-    {% endif %}
-</body>
-</html>
+{% extends "base.html" %}
+
+    {% block page_title %}
+        {{ month_name|title }} Challenge
+    {% endblock page_title %}
+
+    {% block content %}
+    {% comment %} include requires the file path starting at the templates level for challenges app {% endcomment %}
+        {% include "challenges/includes/header.html" with active_page="challenge" %}
+
+        <h1>{{ month_name|title }} Challenge</h1>
+        <!-- use curly brackets to write django language DTL -->
+        {% if text %}
+        <h2>{{ text }}</h2>
+        {% else %}
+        <p>There is no challenge for this month yet!<p>
+        {% endif %}
+    {% endblock content %}

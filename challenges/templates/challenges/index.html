@@ -1,17 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>All Challenge</title>
-</head>
-<body>
-    <ul>
-        {% for month in months %}
-        {% comment %} OLD WAY <li><a href="/challenges/{{ month }}">{{ month|title }}</li> {% endcomment %}
-            {% comment %} for url, need first to include name of path, then the actual name of the endpoint or the variable name  {% endcomment %}
-        <li><a href="{% url "month-challenge" month %}">{{ month|title }}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
+{% extends "base.html" %}
+{% comment %} extends references the global templates folder base.html file in there, need to add this to settings.py in project for this ref to work {% endcomment %}
+
+    {% block page_title %}
+        All Challenges
+    {% endblock  %}
+
+    {% block content %}
+        {% include "challenges/includes/header.html" with active_page="index" %}
+
+        <ul>
+            {% for month in months %}
+            {% comment %} OLD WAY <li><a href="/challenges/{{ month }}">{{ month|title }}</li> {% endcomment %}
+                {% comment %} for url, need first to include name of path, then the actual name of the endpoint or the variable name  {% endcomment %}
+                <li><a href="{% url "month-challenge" month %}">{{ month|title }}</li>
+            {% endfor %}
+        </ul>
+    {% endblock  %}

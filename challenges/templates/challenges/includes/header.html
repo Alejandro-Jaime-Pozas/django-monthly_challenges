@@ -1,0 +1,10 @@
+<header>
+    <nav>
+        {% comment %} url dtl allows to ref the path name 'index' in urls.py {% endcomment %}
+        <a href="{% url "index" %}">All Challenges</a>
+    </nav>
+    {% comment %} you can include any variable from the parent of this include snippet here {% endcomment %}
+    {% comment %} {{ month_name }} {% endcomment %}
+</header>
+
+{{active_page}}

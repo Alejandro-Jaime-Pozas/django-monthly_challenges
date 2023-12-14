@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseNotFound, HttpResponseRedirect, Http404
 from django.urls import reverse # reverse allows to reference url paths defined in urls.py
 from django.template.loader import render_to_string
 
@@ -65,5 +65,6 @@ def monthly_challenge(request, month): # second parameter should be identical to
         })
         # return HttpResponse("<h1>Hi there</h1>")
     except:
-        return HttpResponseNotFound("<h1>This month is stupid</h1>")
-    
+        # render_to_string("404.html") # auto grabs the 404 file in global templates dir
+        # return HttpResponseNotFound("<h1>This month is stupid</h1>") # old way
+        raise Http404() # raises a not found error and auto-applies the 404.html file if there is one in global templates
