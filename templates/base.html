@@ -5,6 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% comment %} blocks allow for html to be input from different file locations {% endcomment %}
     {% comment %} text bw block/endblock indicates a default value if no input {% endcomment %}
     <title>{% block page_title %}My Challenges{% endblock %}</title>
     <link rel="stylesheet" href="{% static "styles.css" %}">
