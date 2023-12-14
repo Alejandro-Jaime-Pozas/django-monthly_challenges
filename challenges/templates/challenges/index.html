@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Challenge</title>
+</head>
+<body>
+    <ul>
+        {% for month in months %}
+        {% comment %} OLD WAY <li><a href="/challenges/{{ month }}">{{ month|title }}</li> {% endcomment %}
+            {% comment %} for url, need first to include name of path, then the actual name of the endpoint or the variable name  {% endcomment %}
+        <li><a href="{% url "month-challenge" month %}">{{ month|title }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

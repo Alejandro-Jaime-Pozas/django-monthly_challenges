@@ -1,3 +1,4 @@
+# this urls.py file created from scratch
 from django.urls import path
 
 from . import views

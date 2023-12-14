@@ -16,7 +16,7 @@ monthly_challenges = {
     "september": "Learn django in mar",
     "october": "Eat no meat in jan",
     "november": "Was the dishes in feb",
-    "december": "Learn django in mar",
+    "december": None,
 }
 
 # Create your views here.
@@ -31,13 +31,17 @@ monthly_challenges = {
 
 # create a main index with all the months as html links
 def index(request):
-    list_items = ""
     months = list(monthly_challenges.keys())
-    for month in months:
-        month_path = reverse("month-challenge", args=[month]) # ref month-challenge path
-        list_items += f"<li><h3><a href=\"{month_path}\">{month.capitalize()}</a></h3></li>"
-    response_data = f"<ul>{list_items}</ul>"
-    return HttpResponse(response_data)
+    # PREV HTML HARDCODED DATA
+    # list_items = ""
+    # for month in months:
+    #     month_path = reverse("month-challenge", args=[month]) # ref month-challenge path
+    #     list_items += f"<li><h3><a href=\"{month_path}\">{month.capitalize()}</a></h3></li>"
+    # response_data = f"<ul>{list_items}</ul>"
+    # return HttpResponse(response_data)
+    return render(request, "challenges/index.html", {
+        'months': months
+    })
 
 
 def monthly_challenge_by_number(request, month):
@@ -53,8 +57,13 @@ def monthly_challenge(request, month): # second parameter should be identical to
     try:
         challenge_text = monthly_challenges[month]
         # response_data = f"<h1>{challenge_text}</h1>" # hard-coded html
-        response_data = render_to_string("challenges/challenge.html")
-        return HttpResponse(response_data) 
+        # response_data = render_to_string("challenges/challenge.html") # render() replaces this
+        # return HttpResponse(response_data) # render() replaces this
+        return render(request, "challenges/challenge.html", {
+            'text': challenge_text,
+            'month_name': month
+        })
+        # return HttpResponse("<h1>Hi there</h1>")
     except:
-        return HttpResponseNotFound("<h1>This month is not supported</h1>")
+        return HttpResponseNotFound("<h1>This month is stupid</h1>")
     
