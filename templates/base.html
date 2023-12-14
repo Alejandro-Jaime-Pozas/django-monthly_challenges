@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {% comment %} text bw block/endblock indicates a default value if no input {% endcomment %}
     <title>{% block page_title %}My Challenges{% endblock %}</title>
+    {% block css_files %}
+    {% endblock css_files %}
 </head>
 <body>
     {% block content %}{% endblock  %}
